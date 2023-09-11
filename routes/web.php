@@ -14,17 +14,27 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization ;
 |
 */
 
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){ //...
+Route::middleware(['auth', 'is_admin'])->group(function () {
+    Route::get('/dashboard', [App\Http\Controllers\Admin\AdminController::class,'index'])->name('dashboard');
 
+    Route::resource('/categorie', App\Http\Controllers\Admin\CategoriesController::class);
+    Route::get('/users', function () {
+        return view('admin.users');
+    });
+});
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-});
-Route::get('/users', function () {
-    return view('admin.users');
-});
+        Route::get('', function () {
+            return view('welcome');
+        });
+
     });

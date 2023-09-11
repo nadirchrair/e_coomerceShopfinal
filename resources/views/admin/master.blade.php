@@ -31,6 +31,7 @@
     </div>
     <!-- ./wrapper -->
     @include('admin.layouts.footer_scripts')
+    @yield('scriptjs')
 </body>
 
 </html>

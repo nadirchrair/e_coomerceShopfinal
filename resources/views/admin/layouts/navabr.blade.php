@@ -42,7 +42,6 @@
             @endforeach
         </div>
     </div>
-
     <!-- Right navbar links -->
     <ul class="navbar-nav mr-auto-navbav">
         <!-- Messages Dropdown Menu -->
