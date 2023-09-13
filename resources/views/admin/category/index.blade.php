@@ -25,8 +25,8 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title"> <button
-                            class="btn btn-outline-primary">{{ trans('admin_sidebar_trans.add') }}</button>
+                    <h3 class="card-title"> <a href="{{ route('categorie.create') }}"
+                            class="btn btn-outline-primary">{{ trans('admin_sidebar_trans.add') }}</a>
                     </h3>
                 </div>
                 <!-- /.card-header -->
@@ -58,8 +58,8 @@
                                 <td><button class="btn btn-outline-success">{{ trans('admin_sidebar_trans.view') }}</button>
                                     <button
                                         class="btn btn-outline-secondary">{{ trans('admin_sidebar_trans.edit') }}</button>
-                                    <button
-                                        class="btn btn-outline-danger">{{ trans('admin_sidebar_trans.delete') }}</button>
+                                    <a href=""
+                                        class="btn btn-outline-danger">{{ trans('admin_sidebar_trans.delete') }}</a>
                                 </td>
                             </tr>
 

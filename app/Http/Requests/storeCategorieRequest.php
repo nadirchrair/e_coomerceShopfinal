@@ -11,7 +11,7 @@ class storeCategorieRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,19 @@ class storeCategorieRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name_ar'=>'required',
+            'name_en'=>'required',
+            'slug'=>'required',
+            'description_ar'=>'required',
+            'description_en'=>'required',
+            'image'=>'required',
+            'is_shopping'=>'required',
+            'is_popular'=>'required',
+            'meta_title_ar'=>'required',
+            'meta_title_en'=>'required',
+            'meta_description_ar'=>'required',
+            'meta_description_en'=>'required',
+            'meta_keywords'=>'required'
         ];
     }
 }

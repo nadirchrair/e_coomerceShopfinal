@@ -13,6 +13,6 @@ return [
     'view'=>'view',
     'edit'=>'edit',
     'delete'=>'delete',
-    'add'=>'add'
+    'add'=>'add new categorie'
 
 ];
