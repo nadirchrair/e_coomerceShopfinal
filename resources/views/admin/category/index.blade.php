@@ -34,6 +34,7 @@
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
+                                <th>id</th>
                                 <th> {{ trans('admin_sidebar_trans.name') }}
                                 </th>
                                 <th> {{ trans('admin_sidebar_trans.image') }}
@@ -48,20 +49,40 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Trident</td>
-                                <td>Internet
-                                    Explorer 4.0
-                                </td>
-                                <td>Win 95+</td>
-                                <td> 4</td>
-                                <td><button class="btn btn-outline-success">{{ trans('admin_sidebar_trans.view') }}</button>
-                                    <button
-                                        class="btn btn-outline-secondary">{{ trans('admin_sidebar_trans.edit') }}</button>
-                                    <a href=""
-                                        class="btn btn-outline-danger">{{ trans('admin_sidebar_trans.delete') }}</a>
-                                </td>
-                            </tr>
+
+                            @foreach ($data as $item)
+                                <tr>
+                                    <td>{{ $item->id }}</td>
+                                    <td>{{ $item->name }}
+                                    </td>
+                                    <td><img class="img-thumbnail mw-100" src="{{ Storage::url($item->image) }}"
+                                            alt=""></td>
+                                    <td>
+
+                                        @if ($item->is_shopping == 1)
+                                            <span class="badge badge-success">showing</span>
+                                        @else
+                                            <span class="badge badge-danger">hiden</span>
+                                        @endif
+                                    </td>
+
+                                    <td>
+
+                                        @if ($item->is_popular == 1)
+                                            <span class="badge badge-success">popular</span>
+                                        @else
+                                            <span class="badge badge-danger">not popular</span>
+                                        @endif
+                                    </td>
+                                    <td><a href="{{ route('categorie.show', $item->id) }}"
+                                            class="btn btn-outline-success">{{ trans('admin_sidebar_trans.view') }}</a>
+                                        <a href="{{ route('categorie.edit', $item->id) }}"
+                                            class="btn btn-outline-secondary">{{ trans('admin_sidebar_trans.edit') }}</a>
+                                        <a href="{{ route('categorie.destroy', $item->id) }}"
+                                            class="btn btn-outline-danger">{{ trans('admin_sidebar_trans.delete') }}</a>
+                                    </td>
+                                </tr>
+                            @endforeach
 
 
                         </tbody>

@@ -5,7 +5,7 @@
 @section('content')
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
+        <!-- Content Header(Page header)-->
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
@@ -21,19 +21,24 @@
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
-        <form action=""method='POST'>
+        <form action="{{ route('categorie.update', $category->id) }}" method='POST'>
+            @csrf
+            @method('PUT')
+
             <div class="row">
                 <div class="col">
                     <label for="">{{ trans('admin_sidebar_trans.name_ar') }}</label>
                     <div class="input-group mb-3 ">
-                        <input type="text" class="form-control" name="name_ar">
+                        <input type="text" class="form-control" name="name_ar"
+                            value="{{ $category->getTranslation('name', 'ar') }}">
 
                     </div>
                 </div>
                 <div class="col">
                     <label for="">{{ trans('admin_sidebar_trans.name_en') }}</label>
                     <div class="input-group mb-3 col">
-                        <input type="text" class="form-control" name="name_en">
+                        <input type="text" class="form-control" name="name_en"
+                            value="{{ $category->getTranslation('name', 'en') }}">
 
                     </div>
                 </div>
@@ -42,7 +47,7 @@
                 <div class="col">
                     <label for="">{{ trans('admin_sidebar_trans.slug') }}</label>
                     <div class="input-group mb-3 ">
-                        <input type="text" class="form-control" name="slug">
+                        <input type="text" class="form-control" name="slug" value="{{ $category->slug }}">
 
                     </div>
                 </div>
@@ -54,57 +59,52 @@
                     </div>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col">
                     <label for="">{{ trans('admin_sidebar_trans.desc_ar') }}</label>
                     <div class="input-group mb-3 ">
 
-                        <textarea name="desc_ar" id="" cols="3" rows="3" class="form-control"></textarea>
+                        <textarea name="description_ar" id="" cols="3" rows="3" class="form-control">{{ $category->getTranslation('description', 'ar') }}</textarea>
                     </div>
                 </div>
                 <div class="col">
                     <label for="">{{ trans('admin_sidebar_trans.desc_en') }}</label>
                     <div class="input-group mb-3 col">
-                        <textarea name="desc_en" id="" cols="3" rows="3" class="form-control"></textarea>
+                        <textarea name="description_en" id="" cols="3" rows="3" class="form-control">{{ $category->getTranslation('description', 'en') }}</textarea>
 
                     </div>
                 </div>
             </div>
-
-
-
             <div class="row">
                 <div class="col">
                     <label for="">{{ trans('admin_sidebar_trans.is_shopping') }}</label>
                     <div class="input-group mb-3 ">
 
-                        <input type="checkbox" name="is_shopping">
+                        <input type="checkbox" name="is_shopping" value="{{ $category->is_shopping }}">
                     </div>
                 </div>
                 <div class="col">
                     <label for="">{{ trans('admin_sidebar_trans.is_popular') }}</label>
                     <div class="input-group mb-3 col">
-                        <input type="checkbox" name="is_popular">
+                        <input type="checkbox" name="is_popular" value="{{ $category->is_popular }}">
 
                     </div>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col">
                     <label for="">{{ trans('admin_sidebar_trans.meta_title_ar') }}</label>
                     <div class="input-group mb-3 ">
 
-                        <input type="text" class="form-control" name="meta_title_ar">
+                        <input type="text" class="form-control" name="meta_title_ar"
+                            value=" {{ $category->getTranslation('meta_title', 'ar') }}">
                     </div>
                 </div>
                 <div class="col">
                     <label for="">{{ trans('admin_sidebar_trans.meta_title_en') }}</label>
                     <div class="input-group mb-3 col">
-                        <input type="text" class="form-control" name="meta_title_en">
+                        <input type="text" class="form-control" name="meta_title_en"
+                            value="{{ $category->getTranslation('meta_title', 'en') }}">
 
                     </div>
                 </div>
@@ -114,30 +114,28 @@
                     <label for="">{{ trans('admin_sidebar_trans.meta_desc_ar') }}</label>
                     <div class="input-group mb-3 ">
 
-                        <textarea type="text" cols="3" rows="3" class="form-control" name="meta_desc_ar"></textarea>
+                        <textarea type="text" cols="3" rows="3" class="form-control" name="meta_description_ar">{{ $category->getTranslation('meta_description', 'ar') }}</textarea>
                     </div>
                 </div>
                 <div class="col">
                     <label for="">{{ trans('admin_sidebar_trans.meta_desc_en') }}</label>
                     <div class="input-group mb-3 col">
-                        <textarea type="text" cols="3" rows="3" class="form-control" name="meta_desc_en"></textarea>
+                        <textarea type="text" cols="3" rows="3" class="form-control" name="meta_description_en">{{ $category->getTranslation('meta_description', 'en') }}</textarea>
 
                     </div>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col">
                     <label for="">{{ trans('admin_sidebar_trans.meta_keyword') }}</label><span
                         class="text-danger">{{ trans('admin_sidebar_trans.meta_keyword') }}</span>
                     <div class="input-group mb-3 ">
-                        <textarea cols="3" rows="3" class="form-control" name="meta_keyword"></textarea>
+                        <textarea cols="3" rows="3" class="form-control" name="meta_keyword">{{ $category->meta_keywords }}</textarea>
                     </div>
                 </div>
             </div>
             <button type="submit" class="btn btn-outline-primary mb-4">{{ trans('admin_sidebar_trans.edit') }}</button>
         </form>
-
     </div>
 @endsection
 @section('scriptjs')

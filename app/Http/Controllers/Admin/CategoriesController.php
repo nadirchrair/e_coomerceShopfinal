@@ -13,7 +13,9 @@ class CategoriesController extends Controller
      */
     public function index()
     {
-        return view('admin.category.index');
+        $data = Categorie::select('id', 'name', 'image', 'is_shopping', 'is_popular')->get();
+
+        return view('admin.category.index',['data'=>$data]);
     }
 
     /**
@@ -65,6 +67,10 @@ class CategoriesController extends Controller
     public function show(string $id)
     {
         //
+        $data = Categorie::where('id',$id)->get();
+        return view('admin.category.show',['singlecat'=>$data]);
+
+
     }
 
     /**
@@ -72,15 +78,18 @@ class CategoriesController extends Controller
      */
     public function edit(string $id)
     {
-        //
-//        return view('admin.category.edit');
+
+       // $data['category'] = $category;
+$data = Categorie::where('id',$id)->first();
+
+        return view('admin.category.edit',['category'=>$data]);
 
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,Category $category)
     {
         //
     }

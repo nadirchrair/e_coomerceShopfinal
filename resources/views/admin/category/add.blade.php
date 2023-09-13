@@ -21,7 +21,7 @@
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
-        <form action="{{ route('categorie.store') }}" method='POST' enctype="multipart/form-data">
+        <form action="{{ route('categorie.store', $item->id) }}" method='POST' enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col">
