@@ -28,5 +28,6 @@ return [
     'meta_desc_en'=>'وصف بالانجليزية',
     'meta_keyword'=>'كلمات مفتاحية',
     'submit'=>'نشر',
+    'products'=>'منتجات'
 
 ];

@@ -26,7 +26,6 @@ class isAdminMiddleware
                 return $next($request);
             }
             else{
-                abort(403);
             }
 
         }

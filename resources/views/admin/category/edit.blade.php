@@ -21,7 +21,7 @@
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
-        <form action="{{ route('categorie.update', $category->id) }}" method='POST'>
+        <form action="{{ route('categorie.update', $category->id) }}" method='POST' enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -54,7 +54,8 @@
                 <div class="col">
                     <label for="">{{ trans('admin_sidebar_trans.image') }}</label>
                     <div class="input-group mb-3 col">
-                        <input type="file" class="form-control" name="image">
+                        <input type="file" class="form-control" name="image"
+                            src="{{ Storage::url($category->image) }}">
 
                     </div>
                 </div>
@@ -80,13 +81,13 @@
                     <label for="">{{ trans('admin_sidebar_trans.is_shopping') }}</label>
                     <div class="input-group mb-3 ">
 
-                        <input type="checkbox" name="is_shopping" value="{{ $category->is_shopping }}">
+                        <input type="checkbox" name="is_shopping" {{ $category->is_shopping == 1 ? 'checked' : '' }}>
                     </div>
                 </div>
                 <div class="col">
                     <label for="">{{ trans('admin_sidebar_trans.is_popular') }}</label>
                     <div class="input-group mb-3 col">
-                        <input type="checkbox" name="is_popular" value="{{ $category->is_popular }}">
+                        <input type="checkbox" name="is_popular" {{ $category->is_popular == 1 ? 'checked' : '' }}>
 
                     </div>
                 </div>
@@ -121,7 +122,6 @@
                     <label for="">{{ trans('admin_sidebar_trans.meta_desc_en') }}</label>
                     <div class="input-group mb-3 col">
                         <textarea type="text" cols="3" rows="3" class="form-control" name="meta_description_en">{{ $category->getTranslation('meta_description', 'en') }}</textarea>
-
                     </div>
                 </div>
             </div>

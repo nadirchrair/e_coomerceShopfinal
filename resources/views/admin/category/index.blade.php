@@ -78,8 +78,12 @@
                                             class="btn btn-outline-success">{{ trans('admin_sidebar_trans.view') }}</a>
                                         <a href="{{ route('categorie.edit', $item->id) }}"
                                             class="btn btn-outline-secondary">{{ trans('admin_sidebar_trans.edit') }}</a>
-                                        <a href="{{ route('categorie.destroy', $item->id) }}"
-                                            class="btn btn-outline-danger">{{ trans('admin_sidebar_trans.delete') }}</a>
+                                        <form action="{{ route('categorie.destroy', $item->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-outline-danger">Delete</button>
+                                        </form>
+
                                     </td>
                                 </tr>
                             @endforeach

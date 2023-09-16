@@ -28,6 +28,9 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/dashboard', [App\Http\Controllers\Admin\AdminController::class,'index'])->name('dashboard');
 
     Route::resource('/categorie', App\Http\Controllers\Admin\CategoriesController::class);
+   // Route::get('categorie/{category}', 'App\Http\Controllers\Admin\CategoriesController@show')->name('categorie.show');
+   Route::resource('/products', App\Http\Controllers\Admin\ProductController::class);
+
     Route::get('/users', function () {
         return view('admin.users');
     });
