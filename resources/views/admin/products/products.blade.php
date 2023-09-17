@@ -21,10 +21,65 @@
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
-        <section class="content">
-            <div class="card col-8 offset-2">
 
+        <section class="content">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"> <a href="{{ route('products.create') }}"
+                            class="btn btn-outline-primary">{{ trans('admin_sidebar_trans.add') }}</a>
+                    </h3>
+                </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                    <table id="example1" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th> {{ trans('products_trans.name') }}
+                                </th>
+                                <th> {{ trans('products_trans.categorie_id') }}
+                                </th>
+                                <th> {{ trans('products_trans.price') }}
+                                </th>
+                                <th> {{ trans('products_trans.qty') }}
+                                </th>
+                                <th> {{ trans('products_trans.status') }}
+                                </th>
+                                <th> {{ trans('admin_sidebar_trans.action') }}
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+
+                        </tbody>
+
+                    </table>
+                </div>
+                <!-- /.card-body -->
             </div>
         </section>
     </div>
+@endsection
+
+@section('scriptjs')
+    <script src="{{ asset('plugins/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
+
+
+    <script>
+        $(function() {
+            $("#example1").DataTable();
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": false,
+                "searching": false,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+            });
+        });
+    </script>
 @endsection

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Categorie;
 class ProductController extends Controller
 {
     /**
@@ -21,7 +21,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+$data['categorie']=Categorie::all();
+        return view('admin.products.insert',$data);
     }
 
     /**

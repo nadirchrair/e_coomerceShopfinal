@@ -93,12 +93,12 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(updateCatgorieRequest $request,Categorie $category)
+    public function update(updateCatgorieRequest $request,string $id)
     {
-       // $category = Categorie::where('id',$id)->first();
-       dd($category);
 
 try{
+    $category = Categorie::where('id',$id)->first();
+
     $validate = $request->validated();
     $image=$category->image;
 
@@ -120,9 +120,8 @@ if ($request->hasFile('image')){
         'image'=>$image,
     ]);
 
- //   toastr()->success(trans("update succes"), 'Congrats', ['timeOut' => 5000]);
-
-//    return redirect()->route('categorie.index');
+    toastr()->success(trans("update succes"), 'Congrats', ['timeOut' => 5000]);
+    return redirect()->route('categorie.index');
 }
 catch (\Exception $e) {
     return redirect()->back()->withErrors(['error' => $e->getMessage()]);
@@ -136,9 +135,9 @@ catch (\Exception $e) {
      */
     public function destroy(Categorie $category)
     {
-       // Storage::delete($category->image);
+        Storage::delete($category->image);
         $category->delete();
-        return view('admin.category.index');
+        return redirect()->route('categorie.index');
     }
 
 }
