@@ -16,6 +16,7 @@ class Product extends Model
     'price',
     'selling_price',
     'image',
+    'qty',
     'tax',
     'status',
     'trend',

@@ -21,7 +21,15 @@
                 </div><!-- /.row -->
             </div><!-- /.container-fluid -->
         </div>
-
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <section class="content">
 
             <div class="card">
@@ -52,7 +60,23 @@
                         </thead>
                         <tbody>
 
+                            @foreach ($produit as $item)
+                                <td>id</td>
+                                <td> {{ $item->name }}
+                                </td>
+                                <td> {{ $item->categorie_id }}
+                                </td>
+                                <td> {{ $item->price }}
+                                </td>
+                                <td> {{ $item->qty }}
+                                </td>
+                                <td> {{ $item->status }}
+                                </td>
 
+                                <td>
+                                    <a href="" class="btn btn-outline-primary">voir</a>
+                                </td>
+                            @endforeach
 
                         </tbody>
 

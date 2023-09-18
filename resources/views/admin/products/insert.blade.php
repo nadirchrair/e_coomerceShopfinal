@@ -28,10 +28,9 @@
                 <div class="col">
                     <label for="">{{ trans('products_trans.categorie_id') }}</label>
                     <div class="input-group mb-3 ">
-                        <select name="" id="" class="form-control">
+                        <select name="categorie_id" id="" class="form-control">
+                            <option value=""></option>
                             @foreach ($categorie as $item)
-                                <option value=""></option>
-
                                 <option value="{{ $item->id }}">{{ $item->name }}</option>
                             @endforeach
 
@@ -76,13 +75,13 @@
                     <label for="">{{ trans('products_trans.price') }}</label>
                     <div class="input-group mb-3 ">
 
-                        <input type="number" name="price" class="form-control" />
+                        <input type="text" name="price" class="form-control" />
                     </div>
                 </div>
                 <div class="col">
                     <label for="">{{ trans('products_trans.selling_price') }}</label>
                     <div class="input-group mb-3 col">
-                        <input type="number" name="selling_price" class="form-control" />
+                        <input type="text" name="selling_price" class="form-control" />
 
                     </div>
                 </div>
@@ -98,7 +97,7 @@
                 <div class="col">
                     <label for="">{{ trans('products_trans.qty') }}</label>
                     <div class="input-group mb-3 col">
-                        <input type="number" name="qty" class="form-control">
+                        <input type="text" name="qty" class="form-control">
 
                     </div>
                 </div>
@@ -125,13 +124,13 @@
                     <label for="">{{ trans('products_trans.trend') }}</label>
                     <div class="input-group mb-3 ">
 
-                        <input type="checkbox" cols="3" rows="3" class="form-control" name="trend">
+                        <input type="checkbox" value="{{ old('trend') }}" class="form-control" name="trend">
                     </div>
                 </div>
                 <div class="col">
                     <label for="">{{ trans('products_trans.status') }}</label>
                     <div class="input-group mb-3 col">
-                        <input type="checkbox" class="form-control" name="status">
+                        <input type="checkbox" class="form-control" name="status" value="{{ old('status') }}">
 
                     </div>
                 </div>
