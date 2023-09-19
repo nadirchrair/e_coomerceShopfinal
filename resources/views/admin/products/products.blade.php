@@ -59,7 +59,6 @@
                             </tr>
                         </thead>
                         <tbody>
-
                             @foreach ($produit as $item)
                                 <td>id</td>
                                 <td> {{ $item->name }}
@@ -72,14 +71,12 @@
                                 </td>
                                 <td> {{ $item->status }}
                                 </td>
-
                                 <td>
-                                    <a href="" class="btn btn-outline-primary">voir</a>
+                                    <a href="{{ route('products.edit', $item->id) }}"
+                                        class="btn btn-outline-primary">update</a>
                                 </td>
                             @endforeach
-
                         </tbody>
-
                     </table>
                 </div>
                 <!-- /.card-body -->

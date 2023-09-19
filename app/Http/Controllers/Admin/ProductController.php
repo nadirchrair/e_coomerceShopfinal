@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Categorie;
 use App\Http\Requests\storeProductRequest;
+use App\Http\Requests\updateProductRequest;
 use App\Models\Product;
 class ProductController extends Controller
 {
@@ -76,21 +77,20 @@ $data['categorie']=Categorie::all();
     {
         //
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
-        //
+        $data['product']=$product;
+        $data['categorie']=Categorie::all();
+        return view('admin.products.updateproduit',$data);
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(updateProductRequest $request, Product $product)
     {
-        //
+        return $request ;
     }
 
     /**
