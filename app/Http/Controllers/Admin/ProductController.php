@@ -8,6 +8,8 @@ use App\Models\Categorie;
 use App\Http\Requests\storeProductRequest;
 use App\Http\Requests\updateProductRequest;
 use App\Models\Product;
+use Illuminate\Support\Facades\Storage;
+
 class ProductController extends Controller
 {
     /**
@@ -87,17 +89,52 @@ $data['categorie']=Categorie::all();
 
     /**
      * Update the specified resource in storage.
-     */
+    */
+
     public function update(updateProductRequest $request, Product $product)
     {
-        return $request ;
-    }
+        try {
+            $image=$product->image;
+            if ($request->hasFile('image')){
+                Storage::delete($product->image);
+                $image = $request->file('image')->store('public/assets/uploads/Products');
+
+            }
+            $product->update([
+            'categorie_id'=>$request->categorie_id,
+            'name' =>$request->name,
+            'slug' => $request->slug,
+            'short_description' => $request->short_description,
+            'description' => $request->description,
+            'price' => $request->price,
+            'selling_price' => $request->selling_price,
+            'qty' => $request->qty,
+            'tax' => $request->tax,
+            'status' => $request->status ? '1' : '0',
+            'trend' => $request->trend ? '1' : '0',
+            'meta_title' =>$request->meta_title,
+            'meta_keywords' => $request->meta_keywords,
+            'meta_descrption' => $request->meta_descrption,
+            'image' => $image,]);
+          //  $product->save();
+
+            toastr()->success(trans("update succes"), 'Congrats', ['timeOut' => 5000]);
+
+            return redirect()->route('products.index');
+
+        } catch (\Exception $e) {
+            return redirect()->back()->withErrors(['error' => $e->getMessage()]);
+        }    }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Product $product)
     {
-        //
+        Storage::delete($product->image);
+        $product->delete();
+        toastr()->success(trans("delete succes"), 'Congrats', ['timeOut' => 5000]);
+        return redirect()->route('products.index');
+
     }
-}
+    }

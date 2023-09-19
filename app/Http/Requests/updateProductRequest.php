@@ -30,7 +30,7 @@ class updateProductRequest extends FormRequest
     'description'=>'required',
     'price'=>'required',
     'selling_price'=>'required',
-    'image'=>'required',
+    'image'=>'image',
     'qty'=>'required',
     'tax'=>'required',
     'meta_title'=>'required',

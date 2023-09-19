@@ -93,13 +93,11 @@ class CategoriesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(updateCatgorieRequest $request,string $id)
+    public function update(updateCatgorieRequest $request,Categorie $category)
     {
 
 try{
-    $category = Categorie::where('id',$id)->first();
 
-    $validate = $request->validated();
     $image=$category->image;
 
 if ($request->hasFile('image')){
