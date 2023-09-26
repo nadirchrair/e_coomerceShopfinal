@@ -72,6 +72,7 @@
                                 <td> {{ $item->status }}
                                 </td>
                                 <td>
+                                    <a href="{{ route('products.show', $item->id) }}">show</a>
                                     <a href="{{ route('products.edit', $item->id) }}"
                                         class="btn btn-outline-primary">update</a>
                                     <form action="{{ route('products.destroy', $item->id) }}" method="post">

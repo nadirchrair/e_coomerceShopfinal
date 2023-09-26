@@ -35,9 +35,7 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
         return view('admin.users');
     });
 });
+Route::resource('', App\Http\Controllers\WebsiteController::class);
 
-        Route::get('', function () {
-            return view('welcome');
-        });
 
     });

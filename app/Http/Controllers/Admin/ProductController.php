@@ -75,9 +75,10 @@ $data['categorie']=Categorie::all();
      * Display the specified resource.
      */
 
-    public function show(string $id)
+    public function show(Product $product)
     {
-        //
+    $data['product']=$product;
+    return view('admin.products.produit_single',$data);
     }
     public function edit(Product $product)
     {
