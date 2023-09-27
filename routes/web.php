@@ -35,7 +35,8 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
         return view('admin.users');
     });
 });
-Route::resource('', App\Http\Controllers\WebsiteController::class);
+Route::get('',[ App\Http\Controllers\WebsiteController::class , 'index']);
+Route::get('/categoriall', [App\Http\Controllers\WebsiteController::class,'allcategories']);
 
 
     });
