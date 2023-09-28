@@ -19,11 +19,16 @@ public function allcategories(){
     return view('website.allcat',$data);
 
 }
+public function get_categorie($slug){
 
-
-
-
-
-
+    $categorie=Categorie::where('slug',$slug)->first();
+    if ($categorie) {
+        // The 'Categorie' object exists, so you can access its properties safely
+        return view('website.getcat',['categorie'=>$categorie]);
+    } else {
+        // Handle the case where no 'Categorie' object is found (e.g., redirect or display an error message)
+        return redirect()->back(); // Replace 'not_found_route' with the appropriate route or action.
+    }
+}
 
 }

@@ -37,6 +37,6 @@ Route::middleware(['auth', 'is_admin'])->group(function () {
 });
 Route::get('',[ App\Http\Controllers\WebsiteController::class , 'index']);
 Route::get('/categoriall', [App\Http\Controllers\WebsiteController::class,'allcategories']);
-
+Route::get('/categoriall/{slug}', [App\Http\Controllers\WebsiteController::class,'get_categorie']);
 
     });
